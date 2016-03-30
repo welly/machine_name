@@ -39,22 +39,15 @@ class MachineName extends WidgetBase {
     return $element;
   }
 
-  public static function exists($value, array $element, FormStateInterface $form_state) {
-    print_r($value);
+  public static function exists($entity_id, array $element, FormStateInterface $form_state) {
 
-    \Doctrine\Common\Util\Debug::dump($form_state);
+    $entity_type = $form_state->getFormObject()->getEntity()->getEntityType();
 
-//    $result = \Drupal::entityQuery($element['#type'])
-//      ->condition('field_testing_value', $value)
-//      ->execute();
-//
-//    print_r($result);
-    die();
+    $result = \Drupal::entityQuery($entity_type->id())
+      ->condition('field_testing.value', $entity_id)
+      ->execute();
+
     return (bool)$result;
-
-//    return \Drupal::entityQuery($element['#type'])
-//      ->condition($element['#field_name'] . '.value', $value)
-//      ->execute();
 
   }
 
