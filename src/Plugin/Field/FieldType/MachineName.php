@@ -74,26 +74,4 @@ class MachineName extends FieldItemBase {
     return $constraints;
   }
 
-  /**
-   * {@inheritdoc}
-   */
-  public static function generateSampleValue(FieldDefinitionInterface $field_definition) {
-    // TODO: Test it.
-    return ['value' => user_password(128)];
-  }
-
-  /**
-   * Checks whether the machine name value is unique for the field.
-   */
-  public static function exists($value, $element, $form_state) {
-
-    return TRUE;
-//    print_r($value);
-//    print_r($element);
-//    die();
-//    return \Drupal::entityQuery($element['#entity_type'])
-//      ->condition($element['#field_name'] . '.value', $value)
-//      ->execute();
-  }
-
 }
