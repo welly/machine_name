@@ -86,9 +86,14 @@ class MachineName extends FieldItemBase {
    * Checks whether the machine name value is unique for the field.
    */
   public static function exists($value, $element, $form_state) {
-    return \Drupal::entityQuery($element['#entity_type'])
-      ->condition($element['#field_name'] . '.value', $value)
-      ->execute();
+
+    return TRUE;
+//    print_r($value);
+//    print_r($element);
+//    die();
+//    return \Drupal::entityQuery($element['#entity_type'])
+//      ->condition($element['#field_name'] . '.value', $value)
+//      ->execute();
   }
 
 }

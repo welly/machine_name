@@ -30,17 +30,32 @@ class MachineName extends WidgetBase {
       '#type' => 'machine_name',
       '#default_value' => isset($items[$delta]->value) ? $items[$delta]->value : NULL,
       '#machine_name' => [
-        'exists' => '\Drupal\machine_name\Plugin\Field\FieldType\MachineName::exists',
+        'exists' => array($this, 'exists'),
       ],
-      // Do we need configurable maxlength?
-      '#maxlength' => 128,
-      '#entity_type' => $this->fieldDefinition->getTargetEntityTypeId(),
-      '#field_name' => $this->fieldDefinition->getName(),
-      '#disabled' => isset($items[$delta]->value),
+      '#maxlength' => 64,
     ];
 
     $element['value'] = $element + $widget;
     return $element;
+  }
+
+  public static function exists($value, array $element, FormStateInterface $form_state) {
+    print_r($value);
+
+    \Doctrine\Common\Util\Debug::dump($form_state);
+
+//    $result = \Drupal::entityQuery($element['#type'])
+//      ->condition('field_testing_value', $value)
+//      ->execute();
+//
+//    print_r($result);
+    die();
+    return (bool)$result;
+
+//    return \Drupal::entityQuery($element['#type'])
+//      ->condition($element['#field_name'] . '.value', $value)
+//      ->execute();
+
   }
 
 }
