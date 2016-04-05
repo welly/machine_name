@@ -33,7 +33,7 @@ class MachineName extends FieldItemBase {
       'columns' => [
         'value' => [
           'type' => 'varchar',
-          'length' => 128,
+          'length' => 64,
           'not null' => TRUE,
           'default' => '',
         ],
@@ -68,10 +68,10 @@ class MachineName extends FieldItemBase {
    */
   public function getConstraints() {
     $constraints = parent::getConstraints();
-
-    // TODO: Add machine name constrain here.
-
+    $constraint_manager = $this->getTypedDataManager()->getValidationConstraintManager();
+    $constraints[] = $constraint_manager->create('MachineNameUnique', []);
     return $constraints;
   }
+
 
 }
