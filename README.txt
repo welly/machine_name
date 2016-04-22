@@ -18,6 +18,8 @@ Feel free to file an issue for reporting any problems and questions.
 
 Timeline:
 
+2016-04-22 Module has been ported to drupal 8.
+
 2011-10-26 The module was created by beejeebus and hunmonk.
 
 2012-04-24 C_Logemann has adopted this module and is the new Maintainer.
